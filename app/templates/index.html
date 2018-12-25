@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Card Share</title>
-    <link rel="stylesheet" href="{{ url_for(css / shared.css) }}" />
-    <link rel="stylesheet" href="{{ url_for(css / reset.css) }}" />
-    <link rel="stylesheet" href="{{ url_for(css / index.css) }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/shared.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
   </head>
   <body>
     <div class="nav">
@@ -29,7 +29,7 @@
       </section>
       <section class="sample-cards">
         <h1 class="sample-cards__title">Sample</h1>
-        <div class="sample-card"><img src="./sample1.png" alt="" /></div>
+        <div class="sample-card"><img src="{{url_for('static', filename='img/sample1.png')}}" alt="" /></div>
         <div class="sample-card"></div>
       </section>
     </div>

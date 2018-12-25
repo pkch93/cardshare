@@ -9,6 +9,7 @@ class Card(db.Model):
     content = db.Column(db.Text)
     receiver = db.Column(db.String(20))
     writer = db.Column(db.String(20))
+    template_type = db.Column(db.Integer)
     img_url = db.Column(db.String)
 
     def __init__(self, title, content, receiver, writer, img_url):

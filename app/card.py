@@ -35,3 +35,12 @@ def _s3_img_upload(img):
 @bp.route("/<hash>")
 def get_card(hash):
     pass
+
+@bp.route("/<int:id>")
+def test(id):
+    if id == 1:
+        return render_template("card1.html")
+    elif id == 2:
+        return render_template("card2.html")
+    else :
+        return "No templates"
