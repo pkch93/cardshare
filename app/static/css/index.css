@@ -1,0 +1,60 @@
+.nav {
+  height: 70px;
+  border-bottom: 0.5px solid black;
+  margin-bottom: 50px;
+}
+
+.nav__container {
+  display: flex;
+  align-items: center;
+  max-width: 450px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  padding: 0 20px;
+}
+
+.logo {
+  width: 100%;
+  font-size: 20px;
+}
+
+.copy {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.tutorial {
+}
+
+.tutorial__title {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.tutorial__numbers {
+}
+
+.tutorial__number {
+  margin-bottom: 10px;
+}
+
+.sample-cards {
+  margin: 0 auto;
+  margin-top: 50px;
+  font-size: 20px;
+  padding: 0 20px;
+}
+
+.sample-cards__title {
+}
+
+.sample-card img {
+  width: 100%;
+  margin-top: 20px;
+  cursor: pointer;
+}

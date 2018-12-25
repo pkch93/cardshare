@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Card Share</title>
+    <link rel="stylesheet" href="./shared.css" />
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./card2.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="scene scene--card">
+        <div class="card__container">
+          <div class="card">
+            <div class="card__face card__face--front">
+              <div class="card__title">THANK YOU</div>
+              <img
+                class="card__img"
+                src="http://image.m.interior.hanssem.com/upload/product/1543916189070_2egoe8z.jpg"
+                alt="card__img"
+              />
+            </div>
+            <div class="card__face card__face--back">
+              <div class="card__to">To. Tom</div>
+              <div class="card__content">
+                card__ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Mauris sodales, neque sit amet porttitor semper, nibh risus
+                auctor diam, sed interdum orci eros vel neque. Fusce dolor
+                massa, vehicula nec nunc a, dignissim gravida odio.
+              </div>
+              <div class="card__from">From. Jesse</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var card = document.querySelector(".card");
+      card.addEventListener("click", function() {
+        card.classList.toggle("is-flipped");
+      });
+
+      var cardFace = document.querySelector(".card__face");
+      var cardImg = document.querySelector(".card__img");
+      var cardTitle = document.querySelector(".card__title");
+      cardTitle.style.height = `${cardFace.offsetHeight -
+        (cardImg.clientHeight +
+          parseFloat(getComputedStyle(cardImg).marginBottom) * 1)}px`;
+    </script>
+  </body>
+</html>
