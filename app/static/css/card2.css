@@ -37,7 +37,7 @@
 
 .card__face::after {
   content: "";
-  background: url(img/texture2.png);
+  background: url(../img/texture2.png);
   opacity: 0.3;
   top: 0;
   left: 0;
@@ -88,7 +88,7 @@
 
 .card__face.card__face--back::after {
   content: "";
-  background: url(img/texture2.png);
+  background: url(../img/texture2.png);
   opacity: 0.3;
   top: 0;
   left: 0;

@@ -3,6 +3,7 @@
 {% block head %}
 {{ super() }}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/card1.css') }}" />
+  <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 {% endblock %}
 {% block body %}
   <div class="wrapper">
@@ -12,7 +13,7 @@
           <div class="card__face card__face--front">
             <img
               class="card__img"
-              src="https://sc01.alicdn.com/kf/HTB1LOnJNFXXXXcDXpXXq6xXFXXXR/200132811/HTB1LOnJNFXXXXcDXpXXq6xXFXXXR.jpg"
+              src="{{card.img_url}}"
               alt="card__img"
             />
             <div class="card__title">{{ card.title }}</div>
@@ -28,6 +29,10 @@
       </div>
     </div>
   </div>
+
+  <a id="kakao-link-btn" href="javascript:sendLink();">
+      <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
+  </a>
   <script>
     var card = document.querySelector(".card");
     card.addEventListener("click", function() {
@@ -38,5 +43,37 @@
     var cardImg = document.querySelector(".card__img");
     var cardTitle = document.querySelector(".card__title");
     cardTitle.style.height = `${cardFace.offsetHeight - cardImg.height}px`;
+
+    Kakao.init('fb602f99e518efc0232e160f0e3c74b5');
+
+    function sendLink() {
+        Kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+            title: '{{card.title}}',
+            imageUrl: '{{ card.img_url }}',
+            link: {
+            mobileWebUrl: 'http://localhost:3000/card/{{card.secret_code}}',
+            webUrl: 'http://localhost:3000/card/{{card.secret_code}}'
+            }
+        },
+        buttons: [
+            {
+            title: '웹으로 보기',
+            link: {
+                mobileWebUrl: 'http://localhost:3000/card/{{card.secret_code}}',
+                webUrl: 'http://localhost:3000/card/{{card.secret_code}}'
+            }
+            },
+            {
+            title: '앱으로 보기',
+            link: {
+                mobileWebUrl: 'http://localhost:3000/card/{{card.secret_code}}',
+                webUrl: 'http://localhost:3000/card/{{card.secret_code}}'
+            }
+            }
+        ]
+        });
+    }
   </script>
 {% endblock %}
