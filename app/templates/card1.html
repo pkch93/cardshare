@@ -1,49 +1,42 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Card Share</title>
-   <link rel="stylesheet" href="{{ url_for('static', filename='css/shared.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/card1.css') }}" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <div class="scene scene--card">
-        <div class="card__container">
-          <div class="card">
-            <div class="card__face card__face--front">
-              <img
-                class="card__img"
-                src="https://sc01.alicdn.com/kf/HTB1LOnJNFXXXXcDXpXXq6xXFXXXR/200132811/HTB1LOnJNFXXXXcDXpXXq6xXFXXXR.jpg"
-                alt="card__img"
-              />
-              <div class="card__title">{{ card.title }}</div>
+{% extends "layout/base.html" %}
+{% block title %}Card1{% endblock %}
+{% block head %}
+{{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/card1.css') }}" />
+{% endblock %}
+{% block body %}
+  <div class="wrapper">
+    <div class="scene scene--card">
+      <div class="card__container">
+        <div class="card">
+          <div class="card__face card__face--front">
+            <img
+              class="card__img"
+              src="https://sc01.alicdn.com/kf/HTB1LOnJNFXXXXcDXpXXq6xXFXXXR/200132811/HTB1LOnJNFXXXXcDXpXXq6xXFXXXR.jpg"
+              alt="card__img"
+            />
+            <div class="card__title">{{ card.title }}</div>
+          </div>
+          <div class="card__face card__face--back">
+            <div class="card__to">To. {{ card.receiver }}</div>
+            <div class="card__content">
+              {{ card.content }}
             </div>
-            <div class="card__face card__face--back">
-              <div class="card__to">To. {{ card.receiver }}</div>
-              <div class="card__content">
-                {{ card.content }}
-              </div>
-              <div class="card__from">From. {{ card.writer }}</div>
-            </div>
+            <div class="card__from">From. {{ card.writer }}</div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <script>
+    var card = document.querySelector(".card");
+    card.addEventListener("click", function() {
+      card.classList.toggle("is-flipped");
+    });
 
-    <script>
-      var card = document.querySelector(".card");
-      card.addEventListener("click", function() {
-        card.classList.toggle("is-flipped");
-      });
-
-      var cardFace = document.querySelector(".card__face");
-      var cardImg = document.querySelector(".card__img");
-      var cardTitle = document.querySelector(".card__title");
-      cardTitle.style.height = `${cardFace.offsetHeight - cardImg.height}px`;
-    </script>
-  </body>
-</html>
+    var cardFace = document.querySelector(".card__face");
+    var cardImg = document.querySelector(".card__img");
+    var cardTitle = document.querySelector(".card__title");
+    cardTitle.style.height = `${cardFace.offsetHeight - cardImg.height}px`;
+  </script>
+{% endblock %}
