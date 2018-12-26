@@ -1,8 +1,8 @@
 import os
 # POSTGRESQL CONFIG
-USERNAME = "pkch"
-PASSWORD = "1234"
-SQLALCHEMY_DATABASE_URI = f"postgresql://{USERNAME}:{PASSWORD}@localhost:5432/pkch"
+USERNAME = "postgres"
+PASSWORD = "fantasy7"
+SQLALCHEMY_DATABASE_URI = f"postgresql://{USERNAME}:{PASSWORD}@localhost:5432/postgres"
 
 # AWS BUCKET CONFIG
 S3_BUCKET_NAME = os.environ.get("S3_BUCKET")

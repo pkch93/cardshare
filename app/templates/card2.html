@@ -15,7 +15,7 @@
         <div class="card__container">
           <div class="card">
             <div class="card__face card__face--front">
-              <div class="card__title">THANK YOU</div>
+              <div class="card__title">{{ card.title }}</div>
               <img
                 class="card__img"
                 src="http://image.m.interior.hanssem.com/upload/product/1543916189070_2egoe8z.jpg"
@@ -23,14 +23,14 @@
               />
             </div>
             <div class="card__face card__face--back">
-              <div class="card__to">To. Tom</div>
+              <div class="card__title">{{ card.title }}</div>
+            </div>
+            <div class="card__face card__face--back">
+              <div class="card__to">To. {{ card.receiver }}</div>
               <div class="card__content">
-                card__ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Mauris sodales, neque sit amet porttitor semper, nibh risus
-                auctor diam, sed interdum orci eros vel neque. Fusce dolor
-                massa, vehicula nec nunc a, dignissim gravida odio.
+                {{ card.content }}
               </div>
-              <div class="card__from">From. Jesse</div>
+              <div class="card__from">From. {{ card.writer }}</div>
             </div>
           </div>
         </div>
