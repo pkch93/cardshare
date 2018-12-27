@@ -7,7 +7,7 @@
     <title>Card Share</title>
     <link rel="stylesheet" href="./shared.css" />
     <link rel="stylesheet" href="./reset.css" />
-    <link rel="stylesheet" href="./card2.css" />
+    <link rel="stylesheet" href="./card4.css" />
   </head>
   <body>
     <div class="nav">
@@ -20,10 +20,9 @@
           <div class="card__container">
             <div class="card">
               <div class="card__face card__face--front">
-                <div class="card__title">THANK YOU</div>
                 <img
                   class="card__img"
-                  src="http://image.m.interior.hanssem.com/upload/product/1543916189070_2egoe8z.jpg"
+                  src="https://images.robertharding.com/preview/RM/RH/SQUARE/832-383054.jpg"
                   alt="card__img"
                 />
               </div>
@@ -59,14 +58,6 @@
       setTimeout(() => {
         card.classList.toggle("is-flipped");
       }, 1500);
-
-      // Title 들어갈 공간 계산
-      var cardFace = document.querySelector(".card__face");
-      var cardImg = document.querySelector(".card__img");
-      var cardTitle = document.querySelector(".card__title");
-      cardTitle.style.height = `${cardFace.offsetHeight -
-        (cardImg.clientHeight +
-          parseFloat(getComputedStyle(cardImg).marginBottom) * 1)}px`;
     </script>
   </body>
 </html>

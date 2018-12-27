@@ -7,7 +7,7 @@
     <title>Card Share</title>
     <link rel="stylesheet" href="./shared.css" />
     <link rel="stylesheet" href="./reset.css" />
-    <link rel="stylesheet" href="./card2.css" />
+    <link rel="stylesheet" href="./card3.css" />
   </head>
   <body>
     <div class="nav">
@@ -20,12 +20,12 @@
           <div class="card__container">
             <div class="card">
               <div class="card__face card__face--front">
-                <div class="card__title">THANK YOU</div>
                 <img
                   class="card__img"
-                  src="http://image.m.interior.hanssem.com/upload/product/1543916189070_2egoe8z.jpg"
+                  src="https://static1.squarespace.com/static/54d86816e4b0b41c024f0fcf/t/5bfea8231ae6cfeab3501761/1544437614873/lore+of+the+sea-surf-buronbay-sunset"
                   alt="card__img"
                 />
+                <div class="card__title">THANK YOU</div>
               </div>
               <div class="card__face card__face--back">
                 <div class="card__to">To. Tom</div>
@@ -66,7 +66,7 @@
       var cardTitle = document.querySelector(".card__title");
       cardTitle.style.height = `${cardFace.offsetHeight -
         (cardImg.clientHeight +
-          parseFloat(getComputedStyle(cardImg).marginBottom) * 1)}px`;
+          parseFloat(getComputedStyle(cardImg).marginTop) * 1)}px`;
     </script>
   </body>
 </html>

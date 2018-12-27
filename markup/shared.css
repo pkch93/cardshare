@@ -4,9 +4,11 @@
 html,
 body {
   font-family: "Nanum Gothic", sans-serif;
-  background-color: #fefefe;
+  /* background-color: #fefefe; */
   letter-spacing: 0.5px;
   height: 100%;
+  /* background: url("./background.png"); */
+  z-index: -1;
 }
 
 .main {
