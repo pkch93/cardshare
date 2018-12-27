@@ -66,15 +66,6 @@
   line-height: 2em;
   word-break: break-all;
   text-align: justify;
-  /* background: linear-gradient(
-    to bottom,
-    #d9d9d9 0%,
-    #fffdef 5%,
-    #fffdef 95%,
-    #d9d9d9 100%
-  );
-  background-size: 100% 2em;
-  background-repeat: repeat-y; */
   overflow-y: scroll;
 }
 
@@ -82,7 +73,7 @@
   display: none;
 }
 
-.card__face.card__face--back::after {
+/* .card__face.card__face--back::after {
   content: "";
   background: url(./texture1.png);
   opacity: 0.5;
@@ -92,7 +83,7 @@
   right: 0;
   position: absolute;
   z-index: -1;
-}
+} */
 
 .card__to {
 }
