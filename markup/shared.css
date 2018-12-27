@@ -37,6 +37,14 @@ body {
   padding: 0 20px;
 }
 
+.logo {
+  font-size: 30px;
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: "Nanum Myeongjo", serif;
+}
+
 .footer {
   background-color: white;
   border-top: 1px solid rgba(0, 0, 0, 0.0975);
@@ -51,14 +59,6 @@ body {
   height: 100%;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-.logo {
-  font-size: 30px;
-  color: black;
-  text-decoration: none;
-  font-weight: bold;
-  font-family: "Nanum Myeongjo", serif;
 }
 
 .button {

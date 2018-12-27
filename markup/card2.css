@@ -60,6 +60,8 @@
   align-items: center;
   letter-spacing: 2px;
   font-size: 20px;
+  padding: 0 20px;
+  text-align: center;
 }
 
 .card__face.card__face--back {

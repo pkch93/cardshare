@@ -58,6 +58,7 @@
   padding: 0 30px;
   letter-spacing: 2px;
   font-size: 20px;
+  text-align: right;
 }
 
 .card__face.card__face--back {
