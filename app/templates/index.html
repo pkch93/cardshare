@@ -7,8 +7,7 @@
     <main class="main">
       <div class="copy">
         <div class="copy__text">
-          당신의 따뜻한 말 한 마디로 행복과 꿈을 함께 나눠갖는 시간을 만들고
-          싶습니다.
+          따뜻한 말 한마디로<br />행복과 추억을 나눠요.
         </div>
       </div>
 
@@ -29,8 +28,10 @@
         </section>
 
         <section class="cards">
-          <a href="#" class="card"><img src="{{ url_for('static', filename='img/card1.png') }}" alt="card1"/></a>
-          <a href="#" class="card"><img src="{{ url_for('static', filename='img/card2.png') }}" alt="card2"/></a>
+          <a href="card/create?type=1" class="card"><img src="{{ url_for('static', filename='img/card1.png') }}" alt="card1"/></a>
+          <a href="card/create?type=2" class="card"><img src="{{ url_for('static', filename='img/card2.png') }}" alt="card2"/></a>
+          <a href="card/create?type=3" class="card"><img src="{{ url_for('static', filename='img/card3.png') }}" alt="card3"/></a>
+          <a href="card/create?type=4" class="card"><img src="{{ url_for('static', filename='img/card4.png') }}" alt="card4"/></a>
         </section>
       </div>
     </main>

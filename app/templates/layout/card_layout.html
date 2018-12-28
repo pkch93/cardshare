@@ -6,8 +6,9 @@
 {% endblock %}
 {% block body %}
   {% block card %}{% endblock %}
-  <a id="kakao-link-btn" href="javascript:sendLink();">
-    <img src="//developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
-  </a>
+    <div class="buttons">
+      <button class="button">카드 만들기</button>
+      <button class="button">카드 공유하기</button>
+    </div>
   <script type="text/javascript">{% include "layout/kakaolink.html" %}</script>
 {% endblock %}
