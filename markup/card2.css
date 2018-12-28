@@ -67,7 +67,7 @@
 .card__face.card__face--back {
   padding: 30px;
   transform: rotateY(180deg);
-  line-height: 2em;
+  line-height: 1.5em;
   word-break: break-all;
   text-align: justify;
   overflow-y: scroll;
@@ -94,8 +94,16 @@
 
 .card__content {
   margin: 20px 0;
+  white-space: pre-line;
 }
 
 .card__from {
   text-align: right;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  padding-bottom: 30px;
 }
