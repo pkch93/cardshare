@@ -1,0 +1,102 @@
+.scene {
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px 20px;
+  perspective: 600px;
+}
+
+.card__container {
+  position: relative;
+  padding-top: 125%;
+}
+
+.card {
+  background-color: white;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  box-shadow: 7px 7px 20px -5px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card__face.card__face--front::after {
+  content: "";
+  background: url(./texture3.png);
+  opacity: 0.4;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.card__img {
+  width: calc(100% - 40px);
+  display: block;
+  margin: 20px auto;
+  margin-top: 25px;
+  margin-bottom: 0;
+  border-radius: 50%;
+}
+
+.card__title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 2px;
+  font-size: 20px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.card__face.card__face--back {
+  padding: 30px;
+  transform: rotateY(180deg);
+  line-height: 2em;
+  word-break: break-all;
+  text-align: justify;
+  overflow-y: scroll;
+}
+
+.card__face.card__face--back::-webkit-scrollbar {
+  display: none;
+}
+
+/* .card__face.card__face--back::after {
+  content: "";
+  background: url(./texture2.png);
+  opacity: 0.3;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+} */
+
+.card__to {
+}
+
+.card__content {
+  margin: 20px 0;
+}
+
+.card__from {
+  text-align: right;
+}
