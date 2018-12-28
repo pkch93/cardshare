@@ -1,0 +1,31 @@
+Kakao.init('{{ kakaolink }}');
+
+function sendLink() {
+    Kakao.Link.sendDefault({
+    objectType: 'feed',
+    content: {
+        title: '{{card.title}}',
+        imageUrl: '{{ card.img_url }}',
+        link: {
+        mobileWebUrl: 'http://localhost:3000/card/{{card.secret_code}}',
+        webUrl: 'http://localhost:3000/card/{{card.secret_code}}'
+        }
+    },
+    buttons: [
+        {
+        title: '웹으로 보기',
+        link: {
+            mobileWebUrl: 'http://localhost:3000/card/{{card.secret_code}}',
+            webUrl: 'http://localhost:3000/card/{{card.secret_code}}'
+        }
+        },
+        {
+        title: '앱으로 보기',
+        link: {
+            mobileWebUrl: 'http://localhost:3000/card/{{card.secret_code}}',
+            webUrl: 'http://localhost:3000/card/{{card.secret_code}}'
+        }
+        }
+    ]
+    });
+}
