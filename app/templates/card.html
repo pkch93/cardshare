@@ -1,12 +1,12 @@
 {% extends "layout/card_layout.html" %}
 {% block title %}Card {{ card.card_type }}{% endblock %}
 {% block custom_css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/card' + card.card_type + '.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/card' + card.card_type + '.css') }}" />
 {% endblock %}
 {% block custom_script %}
-<script type="text/javascript" src="{{ url_for('static', filename='js/card' + card.card_type + '.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/card' + card.card_type + '.js') }}"></script>
 {% endblock %}
 {% block body %}
-{% include "layout/card" + card.card_type + ".html" %}
-{{ super() }}
+    {% include "layout/card" + card.card_type + ".html" %}
+    {{ super() }}
 {% endblock %}

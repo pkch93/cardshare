@@ -18,4 +18,4 @@ var cardImg = document.querySelector(".card__img");
 var cardTitle = document.querySelector(".card__title");
 cardTitle.style.height = `${cardFace.offsetHeight -
 (cardImg.clientHeight +
-  parseFloat(getComputedStyle(cardImg).marginBottom) * 1)}px`;
+  parseFloat(getComputedStyle(cardImg).marginTop) * 1)}px`;

@@ -1,8 +1,7 @@
 .scene {
   width: 100%;
   margin: 0 auto;
-  padding: 20px;
-  margin-top: 50px;
+  padding: 30px 20px;
   perspective: 600px;
 }
 
@@ -19,8 +18,8 @@
   box-shadow: 7px 7px 20px -5px rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
-  left: 0;
   bottom: 0;
+  left: 0;
   right: 0;
 }
 
@@ -35,13 +34,13 @@
   backface-visibility: hidden;
 }
 
-.card__face::after {
+.card__face.card__face--front::after {
   content: "";
   background: url(../img/texture2.png);
-  opacity: 0.3;
+  opacity: 0.4;
   top: 0;
-  left: 0;
   bottom: 0;
+  left: 0;
   right: 0;
   position: absolute;
   z-index: -1;
@@ -56,12 +55,13 @@
 }
 
 .card__title {
-  padding: 30px;
-  letter-spacing: 0.2em;
-  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  letter-spacing: 2px;
+  font-size: 20px;
+  padding: 0 20px;
+  text-align: center;
 }
 
 .card__face.card__face--back {
@@ -70,15 +70,6 @@
   line-height: 2em;
   word-break: break-all;
   text-align: justify;
-  /* background: linear-gradient(
-    to bottom,
-    #d9d9d9 0%,
-    #fffdef 5%,
-    #fffdef 95%,
-    #d9d9d9 100%
-  );
-  background-size: 100% 2em;
-  background-repeat: repeat-y; */
   overflow-y: scroll;
 }
 
@@ -86,17 +77,17 @@
   display: none;
 }
 
-.card__face.card__face--back::after {
+/* .card__face.card__face--back::after {
   content: "";
   background: url(../img/texture2.png);
   opacity: 0.3;
   top: 0;
-  left: 0;
   bottom: 0;
+  left: 0;
   right: 0;
   position: absolute;
   z-index: -1;
-}
+} */
 
 .card__to {
 }

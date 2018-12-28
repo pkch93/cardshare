@@ -7,7 +7,7 @@
 
 .card__container {
   position: relative;
-  padding-top: 125%;
+  padding-top: 100%;
 }
 
 .card {
@@ -36,8 +36,8 @@
 
 .card__face.card__face--front::after {
   content: "";
-  background: url(./texture2.png);
-  opacity: 0.4;
+  background: url(../img/texture4.png);
+  opacity: 0.5;
   top: 0;
   bottom: 0;
   left: 0;
@@ -47,21 +47,9 @@
 }
 
 .card__img {
-  width: calc(100% - 40px);
+  width: 100%;
   display: block;
-  margin: 20px auto;
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-.card__title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  letter-spacing: 2px;
-  font-size: 20px;
-  padding: 0 20px;
-  text-align: center;
+  padding: 20px;
 }
 
 .card__face.card__face--back {
@@ -79,8 +67,8 @@
 
 /* .card__face.card__face--back::after {
   content: "";
-  background: url(./texture2.png);
-  opacity: 0.3;
+  background: url(../img/texture1.png);
+  opacity: 0.5;
   top: 0;
   bottom: 0;
   left: 0;

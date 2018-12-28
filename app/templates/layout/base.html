@@ -8,9 +8,15 @@
     <title>{% block title %}{% endblock %} - CardShare</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/shared.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" />
+    <script src="https://unpkg.com/ionicons@4.5.0/dist/ionicons.js"></script>
     {% endblock %}
 </head>
 <body>
+    <div class="nav">
+      <div class="nav__container"><a href="#" class="logo">CARD SHARE</a></div>
+    </div>
     {% block body %}{% endblock %}
+    <div class="footer"><div class="footer__container"></div></div>
+    {% block custom_script %}{% endblock %}
 </body>
 </html>
