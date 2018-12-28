@@ -2,67 +2,77 @@
 {% block title %}Card1{% endblock %}
 {% block head %}
 {{ super() }}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/card'+ type + '.css') }}" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/card'+ type + '.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.js"></script>
 {% endblock %}
 {% block body %}
-    <main class="main">
-      <div class="wrapper">
-        <form class="form" action="create" method="post">
-          <span class="form__label required">보내는 사람</span>
-          <input class="form__input" type="text" name="from" required />
-          <span class="form__label required">받는 사람</span>
-          <input class="form__input" type="text" name="to" required />
-          <span class="form__label required">제목</span>
-          <input class="form__input" type="text" name="title" required />
-          <span class="form__label required">하고싶은 말</span>
-          <textarea
-            class="form__input"
-            name="content"
-            cols="30"
-            rows="5"
-            required
-          ></textarea>
-        </form>
-        <div class="buttons">
-          <button class="button button--preview">미리보기</button>
-          <button class="button">만들기</button>
+  <main class="main">
+    <div class="wrapper">
+      <form class="form" action="create" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="card_type" />
+        <span class="form__label required">보내는 사람</span>
+        <input class="form__input" type="text" name="writer" required />
+        <span class="form__label required">받는 사람</span>
+        <input class="form__input" type="text" name="receiver" required />
+        <span class="form__label required">제목</span>
+        <input class="form__input" type="text" name="title" required />
+        <span class="form__label required">하고싶은 말</span>
+        <textarea
+          class="form__input"
+          name="content"
+          cols="30"
+          rows="5"
+          required
+        ></textarea>
+        <span class="form__label required">사진 붙이기</span>
+        <input class="form__input form__input--img" type="file" name="img" required />
+        <div class="img__container">
+          <img
+            class="img__cropper"
+            src=""
+          />
         </div>
+      </form>
+      <div class="buttons">
+        <button class="button button--preview">미리보기</button>
+        <button class="button button--submit">만들기</button>
       </div>
+    </div>
 
-      <div class="preview">
-        <div class="wrapper">
-          <div class="preview__top">
-            <span class="preview__title" onclick="inputToCard()">미리보기</span>
-            <span class="preview__close">&times;</span>
-          </div>
+    <div class="preview">
+      <div class="wrapper">
+        <div class="preview__top">
+          <span class="preview__title" onclick="inputToCard()">미리보기</span>
+          <span class="preview__close">&times;</span>
+        </div>
 
-          <div class="preview__content">
-            <div class="scene scene--card">
-              <div class="card__container">
-                <div class="card">
-                  <div class="card__face card__face--front">
-                    <img
-                      class="card__img"
-                      src="https://sc01.alicdn.com/kf/HTB1LOnJNFXXXXcDXpXXq6xXFXXXR/200132811/HTB1LOnJNFXXXXcDXpXXq6xXFXXXR.jpg"
-                      alt="card__img"
-                    />
-                    <div class="card__title"></div>
-                  </div>
-                  <div class="card__face card__face--back">
-                    <div class="card__to"></div>
-                    <div class="card__content"></div>
-                    <div class="card__from"></div>
-                  </div>
+        <div class="preview__content">
+          <div class="scene scene--card">
+            <div class="card__container">
+              <div class="card">
+                <div class="card__face card__face--front">
+                  <img
+                    id="card_img"
+                    class="card__img"
+                    src="https://sc01.alicdn.com/kf/HTB1LOnJNFXXXXcDXpXXq6xXFXXXR/200132811/HTB1LOnJNFXXXXcDXpXXq6xXFXXXR.jpg"
+                    alt="card__img"
+                  />
+                  <div class="card__title"></div>
+                </div>
+                <div class="card__face card__face--back">
+                  <div class="card__to"></div>
+                  <div class="card__content"></div>
+                  <div class="card__from"></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </div>
+  </main>
 {% endblock %}
 {% block custom_script%}
 <script type="text/javascript" src="{{ url_for('static', filename='js/form.js') }}"></script>

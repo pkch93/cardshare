@@ -9,7 +9,7 @@ bp = Blueprint("card", __name__)
 @bp.route("/create", methods=["GET", "POST"])
 def create_card():
     if request.method == "GET":
-        type = request.args.get("type")
+        type = request.args.get("type") or "1"
         card = Card()
         return render_template("form.html", type=type, card=card)
     else:

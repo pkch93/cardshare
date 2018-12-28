@@ -82,3 +82,7 @@
   font-weight: 100;
   color: #343a40;
 }
+
+#load_img {
+    display: none;
+}

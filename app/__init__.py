@@ -11,9 +11,10 @@ s3_resource = boto3.resource(
 
 app = Flask(__name__, instance_relative_config=True)
 app.config.from_mapping(
-    SECRET_KEY="dev",
-    SQLALCHEMY_DATABASE_URI=SQLALCHEMY_DATABASE_URI,
-    SQLALCHEMY_TRACK_MODIFICATIONS=True
+    SECRET_KEY = "dev",
+    MAX_CONTENT_LENGTH = 1024 * 1024,
+    SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI,
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 )
 
 db = SQLAlchemy(app)
