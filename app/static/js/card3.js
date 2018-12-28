@@ -19,3 +19,9 @@ var cardTitle = document.querySelector(".card__title");
 cardTitle.style.height = `${cardFace.offsetHeight -
 (cardImg.clientHeight +
   parseFloat(getComputedStyle(cardImg).marginTop) * 1)}px`;
+
+// 카드 만들기 버튼으로 메인 이동
+var mkBtn = document.querySelector(".button--mkcard");
+mkBtn.addEventListener("click", function() {
+    location.replace("/");
+});
