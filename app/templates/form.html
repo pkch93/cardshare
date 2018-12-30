@@ -4,14 +4,16 @@
 {{ super() }}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/card'+ type + '.css') }}" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.css" />
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.js"></script>
+  <script src="http://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
 {% endblock %}
 {% block body %}
   <main class="main">
     <div class="wrapper">
       <form class="form" action="create" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="card_type" />
+        <input type="hidden" name="card_type" value="{{type}}"/>
+        <input type="hidden" name="img_url" />
         <span class="form__label required">보내는 사람</span>
         <input class="form__input" type="text" name="writer" required />
         <span class="form__label required">받는 사람</span>
@@ -26,18 +28,19 @@
           rows="5"
           required
         ></textarea>
-        <span class="form__label required">사진 붙이기</span>
-        <input class="form__input form__input--img" type="file" name="img" required />
-        <div class="img__container">
-          <img
-            class="img__cropper"
-            src=""
-          />
-        </div>
+         <div id="cropper__container">
+           <div class="cropper__button">
+             <label for="cropper__input" class="cropper__input">
+               사진 업로드
+             </label>
+             <input type="file" id="cropper__input" />
+           </div>
+           <img id="cropper__img" alt="" />
+         </div>
       </form>
       <div class="buttons">
         <button class="button button--preview">미리보기</button>
-        <button class="button button--submit">만들기</button>
+        <button class="button" id="upload__button">만들기</button>
       </div>
     </div>
 
@@ -76,4 +79,78 @@
 {% endblock %}
 {% block custom_script%}
 <script type="text/javascript" src="{{ url_for('static', filename='js/form.js') }}"></script>
+<script type="text/javascript">
+// image load and cut
+ const image = document.querySelector("#cropper__img");
+ const cropper = new Cropper(image, {
+   aspectRatio: 1 / 1
+ });
+
+ // upload image to cropper
+ let upload = document.querySelector("#cropper__input");
+ upload.addEventListener("change", e => {
+   if (e.target.files.length) {
+     if (e.target.files[0].type.match("image.*")) {
+       const reader = new FileReader();
+       reader.readAsDataURL(e.target.files[0]);
+       reader.onload = () => {
+         cropper.replace(reader.result);
+       };
+     } else {
+       alert("사진만 업로드가 가능합니다.");
+     }
+   }
+ });
+
+// upload cropped image to s3
+ AWS.config.update({
+   accessKeyId: "{{aws_id}}",
+   secretAccessKey: "{{aws_secret}}"
+ });
+ AWS.config.region = "{{aws_resion}}";
+
+ function dataURItoBlob(dataURI) {
+   var binary = atob(dataURI.split(",")[1]);
+   var array = [];
+   for (var i = 0; i < binary.length; i++) {
+     array.push(binary.charCodeAt(i));
+   }
+   return new Blob([new Uint8Array(array)], { type: "image/jpeg" });
+ }
+
+ const cropperButton = document.querySelector("#upload__button");
+ var cardForm = document.querySelector(".form");
+ cropperButton.addEventListener("click", function() {
+   if (
+     document.getElementsByName("writer")[0].value === "" ||
+     document.getElementsByName("receiver")[0].value === "" ||
+     document.getElementsByName("title")[0].value === "" ||
+     document.getElementsByName("content")[0].value === "" ||
+     document.getElementById("cropper__img").src === ""
+   ) {
+     alert("양식을 모두 채워주세요.");
+   } else {
+     var dataUrl = cropper.getCroppedCanvas().toDataURL("image/jpeg");
+     var blobData = dataURItoBlob(dataUrl);
+
+     // 키를 유니크하게 해야한다.
+     var params = {
+       Key: Date.now() + "_" + upload.files[0].name,
+       ContentType: blobData.type,
+       Body: blobData,
+       ACL: "public-read"
+     };
+
+     var bucket = new AWS.S3({ params: { Bucket: "{{s3_bucket}}" } });
+     var img_url = document.querySelector("input[name=img_url]");
+     bucket.upload(params, function(err, data) {
+       if(err) console.log(err);
+       if (data){
+         img_url.value = data.Location;
+         cardForm.submit();
+       }
+     });
+   }
+ });
+</script>
 {% endblock %}
