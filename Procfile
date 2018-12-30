@@ -1,3 +1,1 @@
-web: python db.py db init
-web: python db.py db migrate
-web: flask run
+web: gunicorn gettingstarted.wsgi --log-file
