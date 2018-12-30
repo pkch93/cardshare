@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="./reset.css" />
     <link rel="stylesheet" href="./card1.css" />
     <link rel="stylesheet" href="./form.css" />
-    <script src="https://unpkg.com/ionicons@4.5.0/dist/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.css"
+    />
+    <script src="http://sdk.amazonaws.com/js/aws-sdk-2.1.24.min.js"></script>
   </head>
   <body>
     <div class="nav">
@@ -34,9 +39,20 @@
             required
           ></textarea>
         </form>
+
+        <div id="cropper__container">
+          <div class="cropper__button">
+            <label for="cropper__input" class="cropper__input">
+              사진 업로드
+            </label>
+            <input type="file" id="cropper__input" />
+          </div>
+          <img id="cropper__img" alt="" />
+        </div>
+
         <div class="buttons">
           <button class="button button--preview">미리보기</button>
-          <button class="button">만들기</button>
+          <button class="button" id="upload__button">만들기</button>
         </div>
       </div>
 
@@ -57,17 +73,12 @@
                       src="https://sc01.alicdn.com/kf/HTB1LOnJNFXXXXcDXpXXq6xXFXXXR/200132811/HTB1LOnJNFXXXXcDXpXXq6xXFXXXR.jpg"
                       alt="card__img"
                     />
-                    <div class="card__title">THANK YOU</div>
+                    <div class="card__title"></div>
                   </div>
                   <div class="card__face card__face--back">
-                    <div class="card__to">To. Tom</div>
-                    <div class="card__content">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Mauris sodales, neque sit amet porttitor semper, nibh
-                      risus auctor diam, sed interdum orci eros vel neque. Fusce
-                      dolor massa, vehicula nec nunc a, dignissim gravida odio.
-                    </div>
-                    <div class="card__from">From. Jesse</div>
+                    <div class="card__to"></div>
+                    <div class="card__content"></div>
+                    <div class="card__from"></div>
                   </div>
                 </div>
               </div>
@@ -95,14 +106,27 @@
       document.querySelector(
         ".card__content"
       ).textContent = document.getElementsByName("content")[0].value;
+      document.getElementsByClassName(
+        "card__img"
+      )[0].src = cropper.getCroppedCanvas().toDataURL("image/jpeg");
     }
 
     // preview
     var previewButton = document.querySelector(".button--preview");
     var preview = document.querySelector(".preview");
     previewButton.addEventListener("click", function() {
-      inputToCard();
-      preview.classList.add("preview--open");
+      if (
+        document.getElementsByName("from")[0].value === "" ||
+        document.getElementsByName("to")[0].value === "" ||
+        document.getElementsByName("title")[0].value === "" ||
+        document.getElementsByName("content")[0].value === "" ||
+        document.getElementById("cropper__img").src === ""
+      ) {
+        alert("양식을 모두 채워주세요.");
+      } else {
+        inputToCard();
+        preview.classList.add("preview--open");
+      }
     });
     var previewClose = document.querySelector(".preview__close");
     previewClose.addEventListener("click", function() {
@@ -118,5 +142,73 @@
     var cardImg = document.querySelector(".card__img");
     var cardTitle = document.querySelector(".card__title");
     cardTitle.style.height = `${cardFace.offsetHeight - cardImg.height}px`;
+
+    // cropper
+    const image = document.querySelector("#cropper__img");
+    const cropper = new Cropper(image, {
+      aspectRatio: 1 / 1
+    });
+
+    // upload image to cropper
+    let upload = document.querySelector("#cropper__input");
+    upload.addEventListener("change", e => {
+      if (e.target.files.length) {
+        if (e.target.files[0].type.match("image.*")) {
+          const reader = new FileReader();
+          reader.readAsDataURL(e.target.files[0]);
+          reader.onload = () => {
+            cropper.replace(reader.result);
+          };
+        } else {
+          alert("사진만 업로드가 가능합니다.");
+        }
+      }
+    });
+
+    // upload cropped image to s3
+    AWS.config.update({
+      accessKeyId: "키",
+      secretAccessKey: "키"
+    });
+    AWS.config.region = "ap-northeast-2";
+
+    function dataURItoBlob(dataURI) {
+      var binary = atob(dataURI.split(",")[1]);
+      var array = [];
+      for (var i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+      }
+      return new Blob([new Uint8Array(array)], { type: "image/jpeg" });
+    }
+
+    const cropperButton = document.querySelector("#upload__button");
+    cropperButton.addEventListener("click", function() {
+      if (
+        document.getElementsByName("from")[0].value === "" ||
+        document.getElementsByName("to")[0].value === "" ||
+        document.getElementsByName("title")[0].value === "" ||
+        document.getElementsByName("content")[0].value === "" ||
+        document.getElementById("cropper__img").src === ""
+      ) {
+        alert("양식을 모두 채워주세요.");
+      } else {
+        var dataUrl = cropper.getCroppedCanvas().toDataURL("image/jpeg");
+        var blobData = dataURItoBlob(dataUrl);
+
+        // 키를 유니크하게 해야한다.
+        var params = {
+          Key: upload.files[0].name,
+          ContentType: blobData.type,
+          Body: blobData,
+          ACL: "public-read"
+        };
+
+        var bucket = new AWS.S3({ params: { Bucket: "버킷이름" } });
+        bucket.upload(params, function(err, data) {
+          console.log(data);
+          console.log(err ? "ERROR!" : "UPLOADED.");
+        });
+      }
+    });
   </script>
 </html>

@@ -56,6 +56,12 @@
   border-top: 1px solid rgba(0, 0, 0, 0.0975);
   z-index: 100;
   padding: 20px 0;
+  padding-bottom: 0;
+  overflow-y: scroll;
+}
+
+.preview::-webkit-scrollbar {
+  display: none;
 }
 
 .preview--open {
@@ -82,4 +88,33 @@
   cursor: pointer;
   font-weight: 100;
   color: #343a40;
+}
+
+#cropper__container {
+  max-width: calc(100% - 40px);
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+#cropper__img {
+  max-width: 100%;
+}
+
+.cropper__button {
+  margin-bottom: 30px;
+}
+
+.cropper__button input[type="file"] {
+  display: none;
+}
+
+.cropper__input {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  letter-spacing: 1px;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
