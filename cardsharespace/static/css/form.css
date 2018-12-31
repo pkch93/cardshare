@@ -102,6 +102,7 @@
 
 #cropper__img {
     max-width: 100%;
+    display: none;
 }
 
 .cropper__button {
