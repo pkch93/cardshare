@@ -2,30 +2,23 @@ Kakao.init('{{ kakaolink }}');
 
 function sendLink() {
     Kakao.Link.sendDefault({
-    objectType: 'feed',
-    content: {
-        title: '{{card.title}}',
-        imageUrl: '{{ card.img_url }}',
-        link: {
-        mobileWebUrl: 'https://cardsharespace.herokuapp.com/card/{{card.secret_code}}',
-        webUrl: 'https://cardsharespace.herokuapp.com/card/{{card.secret_code}}'
-        }
-    },
-    buttons: [
-        {
-        title: '웹으로 보기',
-        link: {
-            mobileWebUrl: 'https://cardsharespace.herokuapp.com/card/{{card.secret_code}}',
-            webUrl: 'https://cardsharespace.herokuapp.com/card/{{card.secret_code}}'
-        }
+        objectType: 'feed',
+        content: {
+            title: '{{card.title}}',
+            imageUrl: '{{ card.img_url }}',
+            link: {
+                mobileWebUrl: 'https://cardsharespace.herokuapp.com/card/{{card.secret_code}}',
+                webUrl: 'https://cardsharespace.herokuapp.com/card/{{card.secret_code}}'
+            }
         },
-        {
-        title: '앱으로 보기',
-        link: {
-            mobileWebUrl: 'https://cardsharespace.herokuapp.com/card/{{card.secret_code}}',
-            webUrl: 'https://cardsharespace.herokuapp.com/card/{{card.secret_code}}'
-        }
-        }
-    ]
+        buttons: [
+            {
+                title: '친구의 카드 보러가기',
+                link: {
+                    mobileWebUrl: 'https://cardsharespace.herokuapp.com/card/{{card.secret_code}}',
+                    webUrl: 'https://cardsharespace.herokuapp.com/card/{{card.secret_code}}'
+                }
+            },
+        ]
     });
 }
