@@ -1,5 +1,5 @@
 {% extends "layout/card_layout.html" %}
-{% block title %}Card {{ card.card_type }}{% endblock %}
+{% block title %}{{ card.title }}{% endblock %}
 {% block custom_css %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/card' + card.card_type + '.css') }}" />
 {% endblock %}
