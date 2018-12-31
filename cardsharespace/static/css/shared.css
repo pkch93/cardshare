@@ -53,7 +53,6 @@ body {
 }
 
 .footer__container {
-  display: flex;
   align-items: center;
   max-width: 450px;
   height: 100%;
@@ -83,6 +82,7 @@ body {
    text-align: right;
    color: grey;
  }
+
 .button {
   background-color: rgb(100, 100, 100);
   padding: 10px 20px;
