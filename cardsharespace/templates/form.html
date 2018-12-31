@@ -1,5 +1,5 @@
 {% extends "layout/base.html" %}
-{% block title %}Card1{% endblock %}
+{% block title %}Card {{ type }}{% endblock %}
 {% block head %}
 {{ super() }}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/form.css') }}" />
