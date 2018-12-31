@@ -3,8 +3,8 @@ import os
 USERNAME = os.getenv("DB_USERNAME")
 PASSWORD = os.getenv("DB_PASSWORD")
 DB_NAME = os.getenv("DB_NAME")
-SQLALCHEMY_DATABASE_URI = f"postgresql://{USERNAME}:{PASSWORD}@localhost:5432/{DB_NAME}"
-# SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+# SQLALCHEMY_DATABASE_URI = f"postgresql://{USERNAME}:{PASSWORD}@localhost:5432/{DB_NAME}"
+SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 
 # AWS BUCKET CONFIG
 S3_BUCKET_NAME = os.environ.get("S3_BUCKET")
