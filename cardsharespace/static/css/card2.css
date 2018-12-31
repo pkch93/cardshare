@@ -55,8 +55,8 @@
   width: calc(100% - 40px);
   display: block;
   margin: 20px auto;
-  margin-top: 0;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 0;
 }
 
 .card__title {
