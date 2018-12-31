@@ -94,6 +94,7 @@
 
 .card__content {
   margin: 20px 0;
+  margin-top: calc(20px - 1.5em);
   white-space: pre-line;
 }
 
