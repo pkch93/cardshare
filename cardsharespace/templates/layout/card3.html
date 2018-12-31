@@ -26,3 +26,13 @@
   </div>
 </main>
 {% endblock %}
+{% block custom_script %}
+<script type="text/javascript">
+var cardFace = document.querySelector(".card__face");
+var cardImg = document.querySelector(".card__img");
+var cardTitle = document.querySelector(".card__title");
+cardTitle.style.height = cardFace.offsetHeight -
+(cardImg.clientHeight +
+parseFloat(getComputedStyle(cardImg).marginBottom) * 1) + "px";
+</script>
+{% endblock %}

@@ -17,9 +17,3 @@ var mkBtn = document.querySelector(".button--mkcard");
 mkBtn.addEventListener("click", function() {
     location.replace("/");
 });
-
-// Title 들어갈 공간 계산
-var cardFace = document.querySelector(".card__face");
-var cardImg = document.querySelector(".card__img");
-var cardTitle = document.querySelector(".card__title");
-cardTitle.style.height = cardFace.offsetHeight - cardImg.height + "px";
