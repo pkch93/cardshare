@@ -63,13 +63,16 @@
                     alt="card__img"
                   />
                   {% if type != 4 %}
-                    <div class="card__title"></div>
+                    <div class="card__title">THANKS TO</div>
                   {% endif %}
                 </div>
                 <div class="card__face card__face--back">
-                  <div class="card__to"></div>
-                  <div class="card__content"></div>
-                  <div class="card__from"></div>
+                  {% if type == 4 %}
+                    <div class="card__title">THANKS TO</div>
+                  {% endif %}
+                  <div class="card__to">Mr. Brown</div>
+                  <div class="card__content">Hello World!</div>
+                  <div class="card__from">Sir Alex Ferguson</div>
                 </div>
               </div>
             </div>
