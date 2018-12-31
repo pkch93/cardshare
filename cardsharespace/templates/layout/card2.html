@@ -34,7 +34,7 @@ window.onload = function() {
   var cardTitle = document.querySelector(".card__title");
   cardTitle.style.height = cardFace.offsetHeight -
   (cardImg.clientHeight +
-  parseFloat(getComputedStyle(cardImg).marginBottom) * 1) + "px";
+  parseFloat(getComputedStyle(cardImg).marginBottom) * 1) - 20 + "px";
 }
 </script>
 {% endblock %}
