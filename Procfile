@@ -1,1 +1,1 @@
-web: gunicorn cardshare-space:app
+web: gunicorn cardsharespace:app

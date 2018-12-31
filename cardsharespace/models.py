@@ -1,4 +1,4 @@
-from app import db
+from cardsharespace import db
 import uuid
 
 class Card(db.Model):

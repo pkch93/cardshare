@@ -20,7 +20,7 @@ app.config.from_mapping(
 db = SQLAlchemy(app)
 db.init_app(app)
 
-from app.models import *
+from cardsharespace.models import *
 db.create_all()
 
 from . import card

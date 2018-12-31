@@ -1,7 +1,7 @@
 from flask import Blueprint, request, render_template, redirect, url_for
 
-from app import db
-from app.models import Card
+from cardsharespace import db
+from cardsharespace.models import Card
 from config import S3_BUCKET_NAME, AWS_S3_RESION, KAKAOLINK_KEY, AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY
 
 bp = Blueprint("card", __name__)
