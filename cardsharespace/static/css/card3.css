@@ -72,8 +72,8 @@
 
 .card__face.card__face--back {
   padding: 30px;
-  transform: rotateY(180deg);
-  -webkit-transform: rotateY(180deg);
+  transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
   line-height: 1.5em;
   word-break: break-all;
   text-align: justify;
