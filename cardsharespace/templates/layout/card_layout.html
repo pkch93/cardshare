@@ -6,9 +6,5 @@
 {% endblock %}
 {% block body %}
   {% block card %}{% endblock %}
-    <div class="buttons">
-      <button class="button button--mkcard">카드 만들기</button>
-      <button class="button button-kakao" onclick="sendLink();">카드 공유하기</button>
-    </div>
   <script type="text/javascript">{% include "layout/kakaolink.html" %}</script>
 {% endblock %}

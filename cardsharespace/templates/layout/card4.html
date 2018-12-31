@@ -12,6 +12,7 @@
             />
           </div>
           <div class="card__face card__face--back">
+            <div class="card__title">{{ card.title }}</div>
             <div class="card__to">To. {{ card.receiver }}</div>
             <div class="card__content">
               {{ card.content }}
@@ -21,6 +22,7 @@
         </div>
       </div>
     </div>
+    {% include "layout/card_buttons.html" %}
   </div>
 </main>
 {% endblock %}
